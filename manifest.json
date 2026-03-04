@@ -1,0 +1,15 @@
+{
+  "name": "Made of Us",
+  "short_name": "Made of Us",
+  "start_url": "inicio.html",
+  "display": "standalone",
+  "background_color": "#02060f",
+  "theme_color": "#02060f",
+  "icons": [
+    {
+      "src": "img/icone.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Login • Made of Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <style>
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #0b0145, #a30338);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .login-box {
+      background: rgba(255, 255, 255, 0);
+      padding: 40px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 20px 40px rgba(255, 255, 255, 0);
+      text-align: center;
+      animation: fadeIn .6s ease;
+    }
+
+    h1 {
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #ee7aae;
+    }
+
+    p {
+      color: #ffecec;
+      margin-bottom: 25px;
+    }
+
+    .form-control {
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .btn-login {
+      background:linear-gradient(135deg, #ce0441, #f03863); 
+      color: white;
+      border-radius: 12px;
+      padding: 12px;
+      font-weight: 600;
+      border: none;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .btn-login:hover {
+      background: #9b1048;
+    }
+
+    .error {
+      color: #690c14;
+      margin-top: 15px;
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+    <h1>💖 Made of Us</h1>
+    <p>Entre para continuar</p>
+
+    <input id="user" type="text" class="form-control mb-3" placeholder="Usuário">
+    <input id="pass" type="password" class="form-control" placeholder="Senha">
+
+    <button class="btn-login" onclick="login()">Entrar</button>
+
+    <div id="error" class="error">Usuário ou senha incorretos</div>
+  </div>
+
+<script>
+  function login() {
+    const user = document.getElementById("user").value;
+    const pass = document.getElementById("pass").value;
+    const error = document.getElementById("error");
+
+    // 🔐 LOGIN FIXO
+    if (user === "seu amor" && pass === "120423") {
+      localStorage.setItem("logged", "true");
+      window.location.href = "index.html";
+    } else {
+      error.style.display = "block";
+    }
+  }
+</script>
+
+</body>
+</html>

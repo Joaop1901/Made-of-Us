@@ -1,0 +1,215 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#007bff">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Made of Us
+  </title>
+   
+  <link rel="icon" href="img/icone.png" type="image/png">
+  <link rel="preload" as="image" href="img/personagem-optimized.png" fetchpriority="high">
+
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Seu CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body >
+
+
+  <header class="site-header">
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+    <div class="container">
+
+      <!-- LOGO -->
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="img/logo.png" alt="Logo" class="logo me-2">
+      </a>
+
+      <!-- BOTÃO MOBILE -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- MENU -->
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+           
+
+          <li class="nav-item">
+            <a class="nav-link" href="historia.html">HISTORIA</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="ela.html">VOCÊ</a>
+          </li>
+
+          <!-- CTA -->
+          <li class="nav-item">
+            <a class="btn btn-cta ms-lg-3" href="solicite.html">
+              Solicite Agora
+            </a>
+          </li> 
+          <li class="nav-item">
+          <a class="btn btn-cta ms-lg-3" onclick="logout()">Sair</a>
+        </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+</header>
+
+
+
+
+
+
+
+
+<section class="intro-hero" id="intro">
+<!--dias-->
+<div class="dias">
+<p><strong><span id="days-count">0</span></strong> <span id="days">dias</span> 💖</p>
+</div>
+
+  <div class="intro-inner">
+
+    <!-- contraste atrás -->
+    <div class="intro-blob"></div>
+
+    <!-- texto no meio (entre blob e personagem) -->
+    <div class="intro-text">
+      <h1>
+       demonstration<br>
+        <span>nossa historia!</span>
+      </h1>
+      <p>Uma surpresa feita pra você.</p>
+    </div>
+
+    <!-- personagem na frente -->
+    <img class="intro-character" src="img/personagem-optimized.png" alt="Personagem" width="1600" height="1239" loading="eager" fetchpriority="high" decoding="async">
+
+  </div>
+
+  
+</section>
+
+<!-- conteúdo do site -->
+<section id="conteudo">
+  <!-- resto do seu site -->
+</section>
+
+
+<div class="timeline-item center">
+  <div class="content">
+    <h4>​​​​​​​​​​​​​​​🎀​</h4>
+    
+<div class="extra-info">
+  <video 
+    src="img/video.mp4"
+    controls
+    autoplay
+    muted
+    loop
+    playsinline>
+  </video>
+</div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="site-footer">
+  <div class="container text-center">
+    <p class="mb-1">Made of Us 💕</p>
+    <small>Three years, countless memories.</small>
+  </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Data do início do namoro
+  const startDate = new Date("2023-04-12T00:00:00");
+  const today = new Date();
+
+  // Zera horas (evita erro de fuso)
+  startDate.setHours(0,0,0,0);
+  today.setHours(0,0,0,0);
+
+  // Diferença em dias (ajuste Google)
+  const diffTime = today.getTime() - startDate.getTime();
+  const daysTogether = Math.floor(diffTime / (1000 * 60 * 60 * 24)) - 5;
+
+  // Elementos
+  const counter = document.getElementById("days-count");
+  const text = document.getElementById("days");
+
+  // Proteção
+  if (!counter) return;
+
+  // 🔥 Animação suave
+  let current = 0;
+  const speed = Math.max(1, Math.floor(daysTogether / 80));
+
+  const interval = setInterval(() => {
+    current += speed;
+    if (current >= daysTogether) {
+      current = daysTogether;
+      clearInterval(interval);
+    }
+    counter.innerText = current;
+  }, 20);
+
+  if (text) {
+    text.innerText = " dias felizes ao seu lado ";
+  }
+
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  if (localStorage.getItem("logged") !== "true") {
+    window.location.href = "login.html";
+  }
+</script>
+
+
+<script>
+  function logout() {
+    localStorage.removeItem("logged");
+    window.location.href = "login.html";
+  }
+</script>
+<script>
+  const hero = document.querySelector('.intro-inner');
+  const char = document.querySelector('.intro-character');
+  const blob = document.querySelector('.intro-blob');
+  const canUseHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (hero && char && blob && canUseHover) {
+    hero.addEventListener('mousemove', (e) => {
+      const r = hero.getBoundingClientRect();
+      const dx = (e.clientX - r.left) / r.width - 0.5;
+      const dy = (e.clientY - r.top) / r.height - 0.5;
+
+      char.style.transform = `translateX(-50%) translate(${dx*12}px, ${dy*10}px)`;
+    });
+
+    hero.addEventListener('mouseleave', () => {
+      char.style.transform = `translateX(-50%)`;
+      blob.style.transform = `scale(0.92)`;
+    });
+  }
+</script>
+
+
+</body>
+</html>

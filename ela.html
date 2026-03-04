@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Para Você 💖</title>
+  <link rel="icon" href="img/icone.png" type="image/png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body >
+<header class="site-header">
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+    <div class="container">
+
+      <!-- LOGO -->
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="img/logo.png" alt="Logo" class="logo me-2">
+      </a>
+
+      <!-- BOTÃO MOBILE -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- MENU -->
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+           
+
+          <li class="nav-item">
+            <a class="nav-link" href="historia.html">HISTORIA</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="ela.html">VOCÊ</a>
+          </li>
+
+          <!-- CTA -->
+          <li class="nav-item">
+            <a class="btn btn-cta ms-lg-3" href="solicite.html">
+              Solicite Agora
+            </a>
+          </li> 
+          <li class="nav-item">
+          <a class="btn btn-cta ms-lg-3" onclick="logout()">Sair</a>
+        </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+</header>
+
+
+<section class="marquee-pill-section">
+  <div class="marquee-pill">
+    <div class="marquee-track">
+      <span>Linda</span><span>Esforçada</span><span>Fiel</span><span>Parceira</span><span>Meu amor</span><span>Minha paz</span><span>Meu lar</span>
+      <span>Linda</span><span>Esforçada</span><span>Fiel</span><span>Parceira</span><span>Meu amor</span><span>Minha paz</span><span>Meu lar</span>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Canvas para efeitos (árvore/folhas/flores) -->
+<canvas id="fx-canvas" style="position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></canvas>
+
+<section class="letter-section">
+  <div class="letter-card" id="letter">
+    <div class="letter-top">
+      <button class="btn-letter" id="startBtn">Ler a carta 💖</button>
+    </div>
+
+    <h1 class="letter-title" id="paperTitle">Oii amor...</h1>
+    <p id="typed-text"></p>
+    <p id="paperDone" class="hidden"></p>
+
+  </div>
+</section>
+
+<section class="body-interactive-section">
+  <div id="corpo-react-root"></div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer id="site-footer">
+  <div class="container text-center">
+    <p class="mb-1">Made of Us 💕</p>
+    <small>Three years, countless memories.</small>
+  </div>
+</footer>
+
+<!-- React -->
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<!-- React App -->
+<script type="text/babel" src="js/corpo-react.js"></script>
+
+<!-- Nova carta com canvas -->
+<script src="js/ela-new.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  if (localStorage.getItem("logged") !== "true") {
+    window.location.href = "login.html";
+  }
+
+  function logout() {
+    localStorage.removeItem("logged");
+    window.location.href = "login.html";
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,385 @@
+ <!doctype html>
+<html lang="pt-BR">
+<head>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#007bff">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Made of Us
+  </title>
+   
+  <link rel="icon" href="img/icone.png" type="image/png">
+
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Seu CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body >
+
+  <header class="site-header">
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+    <div class="container">
+
+      <!-- LOGO -->
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="img/logo.png" alt="Logo" class="logo me-2">
+      </a>
+
+      <!-- BOTÃO MOBILE -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- MENU -->
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+          <li class="nav-item">
+            <a class="nav-link" href="historia.html">HISTORIA</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="ela.html">VOCÊ</a>
+          </li>
+
+          <!-- CTA -->
+          <li class="nav-item">
+            <a class="btn btn-cta ms-lg-3" href="solicite.html">
+              Solicite Agora
+            </a>
+          </li>
+          <li class="nav-item">
+          <a class="btn btn-cta ms-lg-3" onclick="logout()">Sair</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+</header>
+ <!-- TIMELINE -->
+<section class="timeline-section py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5">Nossa Linha do Tempo</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item left">
+        <div class="content">
+          <h4>💫 simples amizade</h4>
+          <p>6° ano, nesse tempo nossa amizade era oque estva surgindo .</p>
+          <div class="extra-info">
+            <img src="img/story1.jpg" alt="">
+         
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item right">
+        <div class="content">
+          <h4>❤️ Onde meu coração sentiu algo diferente</h4>
+          <p>Aqui meu coração sentia algo diferente quando eu olhava para você,  mas você não  me dava bola.</p>
+          <div class="extra-info">
+            <img src="img/story2.jpg" alt="">
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item left">
+        <div class="content">
+          <h4>🌍O mundo voltando da pandemia</h4>
+          <p>Do 6° ano ao 9° depois de um periodo complicado pra todos voltamos diferente, com o corpo diferente com a personalidade diferente. e nessa epoca nossos amigos ja chipavam agente .</p>
+          <div class="extra-info">
+            <img src="img/story3.jpg" alt="">
+           
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item right">
+        <div class="content">
+          <h4>✨ Tentando conquistar</h4>
+          <p>Usando a tecnica de tentar ser engraçado, encher seu saco, tratar você diferente que fui chamando sua atenção</p>
+          <div class="extra-info">
+            <img src="img/story4.jpg" alt="">
+           
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item left">
+        <div class="content">
+          <h4>❣️ Aqui os dois ja se entregavam a paixão </h4>
+          <p>Nosso primeiro beijo ainda não tinha rolado mas a paixão era real.</p>
+          <div class="extra-info">
+            <img src="img/story5.jpg" alt="">
+           
+          </div>
+        </div>
+      </div>
+
+       <div class="timeline-item right">
+        <div class="content">
+          <h4>💋​ Primeiro "beijo"</h4>
+          <p>Não sei se pode ser considerado o primeiro beijo, ja que eu so beijei seu dente kkk, mas foi ali o primeiro passo da nossa historia </p>
+          <div class="extra-info">
+            <img src="img/story6.jpg" alt="">
+           
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item left">
+        <div class="content">
+          <h4>​👨‍👩‍👧‍👦​ Conhecendo minha familia  </h4>
+          <p>Nesse dia você conheceu a loucura que é minha família, os dois estavam com muita vergonha .</p>
+          <div class="extra-info">
+            <img src="img/story7.jpg" alt="">
+           
+          </div>
+        </div>
+      </div>
+
+       <div class="timeline-item right">
+        <div class="content">
+          <h4>​​🍟​​ Primeiro vez saindo juntos </h4>
+          <p>Fomos ao shooping com minha mae porque não podiamos sair sozinho.</p>
+          <div class="extra-info">
+            <img src="img/story8.jpg" alt="">
+           
+          </div>
+        </div>
+      </div>
+      
+       <div class="timeline-item left">
+        <div class="content">
+          <h4>​👨‍👩‍👧‍👦​ Conhecendo sua familia  </h4>
+          <p>Nesse dia eu conheci a sua família, eu  estava com muita vergonha porque era sitio e agente ia ficar sem camisa  .</p>
+          <div class="extra-info">
+            <img src="img/story9.jpg" alt="">
+           
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="timeline-item right">
+        <div class="content">
+          <h4>​​​​🎄​   ​ Primeiro natal junto  </h4>
+          <p>Nosso primeiro natal juntos, foi ali onde nossas familias se conheceram.</p>
+          <div class="extra-info">
+            <img src="img/story10.jpg" alt="">
+           
+          </div>
+        </div>
+      </div>
+
+       <div class="timeline-item left">
+        <div class="content">
+          <h4>​​⛰️​​​ Primeira viagem juntos  </h4>
+          <p>Nossa primeira vez indo pra valadares, tentando sobreviver aquele calor.</p>
+          <div class="extra-info">
+            <img src="img/story11.jpg" alt="">
+           
+          </div>
+        </div>
+      </div>
+
+
+      <div class="timeline-item right">
+        <div class="content">
+          <h4>​👨‍👩‍👧 Role com nossas familias  </h4>
+          <p>Fomos com nossa familia  na serra da moeda e foi muito bom e depois fomos em um restaurante, um dia inesquecivel.</p>
+          <div class="extra-info">
+            <img src="img/story12.jpg" alt="">
+           
+          </div>
+        </div>
+      </div>
+
+       <div class="timeline-item left">
+        <div class="content">
+          <h4>​​💗​ Meu video favorito nosso </h4>
+          <p>Esse video eu tenho um carinho enorme pro ele, tanto pelo contexto mas tbm porque você estava linda.</p>
+          <div class="extra-info">
+            <img src="img/story13.jpg" alt="">
+           
+          </div>
+        </div>
+      </div>
+
+
+      <div class="timeline-item right">
+        <div class="content">
+          <h4>​🧺​ Nosso piquenique  </h4>
+          <p>Fomos ao zologico e fizemos um piquenique e foi uns dos date diferente e gostoso que tivemos.</p>
+          <div class="extra-info">
+            <img src="img/story14.jpg" alt="">
+           
+          </div>
+        </div>
+      </div>
+
+
+       <div class="timeline-item left">
+        <div class="content">
+          <h4>​​​​​​​​​​🎶​​ show do Bruno Mars </h4>
+          <p>Voce sempre me propando roles diferentes, coisas que nao tinho constume com minha familia  .</p>
+          <div class="extra-info">
+            <img src="img/story15.jpg" alt="">
+           
+          </div>
+        </div>
+      </div>
+
+      
+       <div class="timeline-item right">
+        <div class="content">
+          <h4>​​​​​​🏖️​​ Nossa viajem pra praia </h4>
+          <p>Voce e sua familia me deram a oportunidade de conhecer a praia e foi muito bom, foi inesquecivel .</p>
+          <div class="extra-info">
+            <img src="img/story16.jpg" alt="">
+           
+          </div>
+        </div>
+      </div>
+
+
+      <div class="timeline-item left">
+        <div class="content">
+          <h4>​​​​​👨‍🍳​​ Nosso encontro </h4>
+          <p>Fomos ao restaurante italiano Taberna de lerforno, um dos encontros mais românticos que tivemos.</p>
+          <div class="extra-info">
+            <img src="img/story17.jpg" alt="">
+           
+          </div>
+        </div>
+      </div>
+
+       <div class="timeline-item right">
+        <div class="content">
+          <h4>​​​​​​​​​​📸​ ​Momentos que guardo com carinho  </h4>
+          <p>fotos que perco horas olhando, porque elas me lembrm de momentos incriveis que vivemos .</p>
+          <div class="extra-info">
+              <img src="img/story18.jpg" alt="">
+              
+          </div>
+        </div>
+      </div>
+
+       <div class="timeline-item left">
+        <div class="content">
+            <h4>​​​​​​​​​​Um dia muito gostoso </h4>
+          <div class="extra-info">
+            <img src="img/story19.jpg" alt="">
+
+            </div>
+        </div>
+      </div>
+
+
+       <div class="timeline-item right">
+        <div class="content">
+            <h4>​​​​​​​​​Roça e suas historias</h4>
+          <div class="extra-info">
+            <img src="img/story20.jpg" alt="">
+
+            </div>
+        </div>
+      </div>
+
+
+       <div class="timeline-item left">
+        <div class="content">
+            <h4>​​​​​​​​​​Filtro mais odiado  </h4>
+          <div class="extra-info">
+            <img src="img/story21.jpg" alt="">
+
+            </div>
+        </div>
+      </div>
+
+
+       <div class="timeline-item right">
+        <div class="content">
+            <h4>​​​​​​​​​​Exploção  </h4>
+          <div class="extra-info">
+            <img src="img/story22.jpg" alt="">
+
+            </div>
+        </div>
+      </div>
+
+
+       <div class="timeline-item left">
+        <div class="content">
+             <h4>​​​​​​​​​​Os opostos se atraem quando existe amor </h4>
+          <div class="extra-info">
+            <img src="img/story23.jpg" alt="">
+
+            </div>
+        </div>
+      </div>
+
+
+
+       <div class="timeline-item right">
+        <div class="content">
+             <h4>​​​​​​​​​​Festa da sua amiga </h4>
+          <div class="extra-info">
+            <img src="img/story24.jpg" alt="">
+
+            </div>
+        </div>
+      </div>
+
+      <div class="timeline-item left">
+        <div class="content">
+             <h4>​​​​​​​​​​Conquista </h4>
+             <p>Hoje continuamos junto e construindo novos momentos, quero esta do seu lado em todas conquistas, parabens por tudo .</p>
+          <div class="extra-info">
+            <img src="img/story25.jpg" alt="">
+
+            </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="site-footer">
+  <div class="container text-center">
+    <p class="mb-1">Made of Us 💕</p>
+    <small>Three years, countless memories.</small>
+  </div>
+</footer>
+</body>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  if (localStorage.getItem("logged") !== "true") {
+    window.location.href = "login.html";
+  }
+</script>
+
+
+
+<script>
+  function logout() {
+    localStorage.removeItem("logged");
+    window.location.href = "login.html";
+  }
+</script>
+
+
+</html>

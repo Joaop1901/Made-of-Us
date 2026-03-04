@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#007bff">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Made of Us</title>
+
+  <link rel="icon" href="img/icone.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Seu CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="capsule-page">
+<img src="img/ceu-estrelado.png" alt="ceu estrelado" class="background-image">
+
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+      <div class="container">
+
+        <!-- LOGO -->
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="img/logo.png" alt="Logo" class="logo me-2">
+        </a>
+
+        <!-- BOTAO MOBILE -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- MENU -->
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+            <li class="nav-item">
+              <a class="nav-link" href="historia.html">HISTORIA</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="ela.html">VOCE</a>
+            </li>
+
+            <!-- CTA -->
+            <li class="nav-item">
+              <a class="btn btn-cta ms-lg-3" href="solicite.html">
+                Solicite Agora
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-cta ms-lg-3" onclick="logout()">Sair</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <main class="wish-stage" id="wishStage">
+    <div class="beam-layer" id="beamLayer"></div>
+
+    <section class="constellation-stage" id="constellationStage">
+      <div class="constellation-sky">
+        <div class="constellation-title">
+          <span class="constellation-kicker">Constelacão</span>
+          <h2>Noite dos pedidos</h2>
+          <p>Cada estrela guarda um desejo.</p>
+        </div>
+        <div class="constellation-stars" id="constellationStars"></div>
+      </div>
+    </section>
+
+    <section class="capsule-stage" id="capsuleStage">
+      <div class="capsule-card" id="capsuleCard">
+        <div class="capsule-orb"></div>
+        <h1>Caixa de pedidos</h1>
+        <p>Adicione seus pedidos e deixe eles virarem estrela cadentes  .</p>
+
+        <label for="wishInput">Seu pedido</label>
+        <textarea id="wishInput" rows="4" placeholder="Escreva o que voce deseja..."></textarea>
+
+        <button id="wishSendBtn" type="button">Deixe brilhar </button>
+        <div class="capsule-footnote">Depois de enviar, ele deixa de ser apenas um desejo.</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/solicite.js"></script>
+  <script>
+    if (localStorage.getItem("logged") !== "true") {
+      window.location.href = "login.html";
+    }
+
+    function logout() {
+      localStorage.removeItem("logged");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>
