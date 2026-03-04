@@ -716,7 +716,7 @@ video {
   :root {
     --hero-blob-size: min(560px, 82vw);
     --hero-character-size: min(620px, 90vw);
-    --hero-character-left: 51.5%;
+    --hero-character-left: 56%;
   }
 }
 
@@ -724,7 +724,7 @@ video {
   :root {
     --hero-blob-size: min(420px, 88vw);
     --hero-character-size: min(480px, 96vw);
-    --hero-character-left: 50.5%;
+    --hero-character-left: 58%;
   }
 }
 
