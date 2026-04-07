@@ -48,6 +48,10 @@
               <a class="nav-link" href="ela.html">VOCE</a>
             </li>
 
+             <li class="nav-item">
+            <a class="nav-link" href="calendario.html">CALENDÁRIO</a>
+          </li>
+
             <!-- CTA -->
             <li class="nav-item">
               <a class="btn btn-cta ms-lg-3" href="solicite.html">
@@ -88,12 +92,17 @@
         <textarea id="wishInput" rows="4" placeholder="Escreva o que voce deseja..."></textarea>
 
         <button id="wishSendBtn" type="button">Deixe brilhar </button>
+        <div id="wishStatus" class="wish-status" aria-live="polite"></div>
         <div class="capsule-footnote">Depois de enviar, ele deixa de ser apenas um desejo.</div>
       </div>
     </section>
   </main>
 
+  <div class="stars-layer" id="starsLayer"></div>
+
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
   <script src="js/solicite.js"></script>
   <script>
     if (localStorage.getItem("logged") !== "true") {
@@ -105,5 +114,6 @@
       window.location.href = "login.html";
     }
   </script>
+ 
 </body>
 </html>

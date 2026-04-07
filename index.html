@@ -49,6 +49,11 @@
             <a class="nav-link" href="ela.html">VOCÊ</a>
           </li>
 
+
+           <li class="nav-item">
+            <a class="nav-link" href="calendario.html">CALENDÁRIO</a>
+          </li>
+
           <!-- CTA -->
           <li class="nav-item">
             <a class="btn btn-cta ms-lg-3" href="solicite.html">
@@ -123,6 +128,27 @@
 
   </div>
 </div>
+
+<section class="music-player-section" aria-label="Player de musica">
+  <div class="music-player">
+    <img src="img/hero1.jpg" class="music-player-cover" alt="Capa da musica">
+
+    <div class="music-player-info">
+      <h2 class="music-player-title">Momento 1</h2>
+      <p class="music-player-artist">Made of Us</p>
+    </div>
+
+    <audio id="music-player-audio" preload="metadata"></audio>
+
+    <input type="range" id="music-player-progress" value="0" min="0" max="100" step="1" aria-label="Progresso da musica">
+
+    <div class="music-player-controls">
+      <button type="button" class="music-player-btn music-player-prev" aria-label="Musica anterior">⏮</button>
+      <button type="button" class="music-player-btn music-player-btn--primary music-player-play" aria-label="Tocar ou pausar">▶</button>
+      <button type="button" class="music-player-btn music-player-next" aria-label="Proxima musica">⏭</button>
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer id="site-footer">
@@ -208,6 +234,95 @@ document.addEventListener("DOMContentLoaded", () => {
       blob.style.transform = `scale(0.92)`;
     });
   }
+</script>
+
+<script>
+  (() => {
+    const player = document.querySelector('.music-player');
+    if (!player) return;
+
+    const audio = player.querySelector('#music-player-audio');
+    const cover = player.querySelector('.music-player-cover');
+    const title = player.querySelector('.music-player-title');
+    const artist = player.querySelector('.music-player-artist');
+    const progress = player.querySelector('#music-player-progress');
+    const btnPlay = player.querySelector('.music-player-play');
+    const btnPrev = player.querySelector('.music-player-prev');
+    const btnNext = player.querySelector('.music-player-next');
+
+    const tracks = [
+      { title: 'Momento 1', artist: 'Made of Us', src: 'img/video.mp4', cover: 'img/hero1.jpg' },
+      { title: 'Momento 2', artist: 'Made of Us', src: 'img/video1.mp4', cover: 'img/hero2.jpg' },
+      { title: 'Momento 3', artist: 'Made of Us', src: 'img/video2.mp4', cover: 'img/hero3.jpg' }
+    ];
+
+    let currentTrackIndex = 0;
+    let isDragging = false;
+
+    function setPlayButton(isPlaying) {
+      btnPlay.textContent = isPlaying ? '⏸' : '▶';
+    }
+
+    function loadTrack(index, shouldAutoplay = false) {
+      if (!tracks.length) return;
+
+      const safeIndex = (index + tracks.length) % tracks.length;
+      const track = tracks[safeIndex];
+      currentTrackIndex = safeIndex;
+
+      audio.src = track.src;
+      audio.load();
+
+      title.textContent = track.title;
+      artist.textContent = track.artist;
+      cover.src = track.cover;
+      cover.alt = `Capa de ${track.title}`;
+      progress.value = 0;
+
+      if (shouldAutoplay) {
+        audio.play().then(() => setPlayButton(true)).catch(() => setPlayButton(false));
+      } else {
+        setPlayButton(false);
+      }
+    }
+
+    function togglePlayPause() {
+      if (!audio.src) return;
+
+      if (audio.paused) {
+        audio.play().then(() => setPlayButton(true)).catch(() => setPlayButton(false));
+      } else {
+        audio.pause();
+        setPlayButton(false);
+      }
+    }
+
+    btnPlay.addEventListener('click', togglePlayPause);
+    btnPrev.addEventListener('click', () => loadTrack(currentTrackIndex - 1, true));
+    btnNext.addEventListener('click', () => loadTrack(currentTrackIndex + 1, true));
+
+    audio.addEventListener('play', () => setPlayButton(true));
+    audio.addEventListener('pause', () => setPlayButton(false));
+    audio.addEventListener('ended', () => loadTrack(currentTrackIndex + 1, true));
+
+    audio.addEventListener('timeupdate', () => {
+      if (isDragging || !audio.duration) return;
+      progress.value = Math.round((audio.currentTime / audio.duration) * 100);
+    });
+
+    progress.addEventListener('input', () => {
+      isDragging = true;
+    });
+
+    progress.addEventListener('change', () => {
+      if (audio.duration) {
+        audio.currentTime = (progress.value / 100) * audio.duration;
+      }
+      isDragging = false;
+    });
+
+    loadTrack(0);
+  })();
 </script>
 
 
