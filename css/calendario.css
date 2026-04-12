@@ -1,66 +1,514 @@
-.calendar-section{
-  padding: 60px 20px;
+/* ================== PAGE BASE ================== */
+.calendar-page {
+  --bg-a: #081838;
+  --bg-b: #102a58;
+  --bg-c: #1f4b8f;
+  position: relative;
+  min-height: 100vh;
+  color: #f5f7ff;
+  background: linear-gradient(115deg, var(--bg-a) 400%, var(--bg-b) 505%, var(--bg-c) 10%);
+  transition: background 0.55s ease;
+}
+
+.calendar-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(80% 70% at 18% 10%, rgba(255, 255, 255, 0), transparent 62%),
+    radial-gradient(70% 60% at 82% 86%, rgba(255, 255, 255, 0.05), transparent 64%);
+}
+
+.site-header,
+.calendar-app,
+#site-footer {
+  position: relative;
+  z-index: 2;
+}
+
+.calendar-page .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 12000;
+}
+
+.calendar-page .custom-navbar {
+  position: relative;
+  z-index: 12000;
+}
+
+.calendar-page .custom-navbar .container {
+  position: relative;
+}
+
+.calendar-page .navbar-toggler {
+  position: relative;
+  z-index: 13000;
+}
+
+/* ================== THEMES ================== */
+.calendar-page.theme-menstruation {
+  --bg-a: #361133;
+  --bg-b: #702253;
+  --bg-c: #c53e7e;
+}
+
+.calendar-page.theme-prediction {
+  --bg-a: #3d1248;
+  --bg-b: #7b2a6f;
+  --bg-c: #d05a98;
+}
+
+.calendar-page.theme-fertile {
+  --bg-a: #123b44;
+  --bg-b: #1f6b68;
+  --bg-c: #44a59b;
+}
+
+.calendar-page.theme-low {
+  --bg-a: #081838;
+  --bg-b: #102a58;
+  --bg-c: #1f4b8f;
+}
+
+.calendar-page.theme-ovulation {
+  --bg-a: #2a1246;
+  --bg-b: #5e2381;
+  --bg-c: #c04aa0;
+}
+
+/* ================== BACKGROUND BLOB ================== */
+.calendar-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.calendar-bg .intro-blob {
+  --blob-transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: clamp(220px, 44vh, 360px);
+  width: min(620px, 94vw);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0.92;
+  transform: var(--blob-transform) scale(0.92);
+  animation: blobPulse 8s ease-in-out infinite;
+  background:
+    radial-gradient(circle at 32% 25%, rgba(125, 174, 246, 0.95), transparent 57%),
+    radial-gradient(circle at 74% 72%, rgba(85, 130, 220, 0.62), transparent 55%),
+    radial-gradient(circle at center, rgba(131, 164, 228, 0.46), rgba(0, 0, 0, 0) 70%);
+}
+
+.theme-menstruation .calendar-bg .intro-blob {
+  background:
+    radial-gradient(circle at 32% 25%, rgba(255, 114, 156, 0.95), transparent 57%),
+    radial-gradient(circle at 74% 72%, rgba(255, 75, 122, 0.64), transparent 55%),
+    radial-gradient(circle at center, rgba(255, 104, 154, 0.46), rgba(0, 0, 0, 0) 70%);
+}
+
+.theme-prediction .calendar-bg .intro-blob {
+  background:
+    radial-gradient(circle at 32% 25%, rgba(255, 183, 214, 0.95), transparent 57%),
+    radial-gradient(circle at 74% 72%, rgba(255, 138, 192, 0.64), transparent 55%),
+    radial-gradient(circle at center, rgba(255, 177, 217, 0.44), rgba(0, 0, 0, 0) 70%);
+}
+
+.theme-fertile .calendar-bg .intro-blob {
+  background:
+    radial-gradient(circle at 32% 25%, rgba(76, 221, 204, 0.95), transparent 57%),
+    radial-gradient(circle at 74% 72%, rgba(40, 179, 169, 0.64), transparent 55%),
+    radial-gradient(circle at center, rgba(111, 230, 217, 0.44), rgba(0, 0, 0, 0) 70%);
+}
+
+.theme-low .calendar-bg .intro-blob {
+  background:
+    radial-gradient(circle at 32% 25%, rgba(133, 180, 246, 0.95), transparent 57%),
+    radial-gradient(circle at 74% 72%, rgba(95, 140, 223, 0.64), transparent 55%),
+    radial-gradient(circle at center, rgba(141, 176, 236, 0.44), rgba(0, 0, 0, 0) 70%);
+}
+
+.theme-ovulation .calendar-bg .intro-blob {
+  background:
+    radial-gradient(circle at 32% 25%, rgba(189, 142, 255, 0.95), transparent 57%),
+    radial-gradient(circle at 74% 72%, rgba(145, 98, 248, 0.64), transparent 55%),
+    radial-gradient(circle at center, rgba(178, 133, 255, 0.44), rgba(0, 0, 0, 0) 70%);
+}
+
+@keyframes blobPulse {
+  0%, 100% {
+    transform: var(--blob-transform) scale(0.92);
+  }
+
+  50% {
+    transform: var(--blob-transform) scale(1.02);
+  }
+}
+
+/* ================== HERO OVAL PANEL ================== */
+.calendar-app {
+  padding-bottom: 18px;
+  position: relative;
+}
+
+.calendar-app > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ================== CALENDAR ================== */
+.calendar-section {
+  padding: 24px 12px 8px;
   display: flex;
   justify-content: center;
 }
 
-.calendar-container{
-  width: 100%;
-  max-width: 400px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 20px;
-  color: #fff;
+.calendar-container {
+  width: min(100%, 430px);
+  background: rgba(6, 15, 40, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 26px;
+  padding: 18px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3);
 }
 
-.calendar-header{
+.calendar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
-.calendar-header button{
-  background: #d8003d;
+.calendar-header button {
+  width: 38px;
+  height: 38px;
   border: none;
+  border-radius: 12px;
+  background: rgba(244, 81, 147, 0.9);
   color: #fff;
-  padding: 6px 12px;
-  border-radius: 8px;
+  font-size: 19px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
   cursor: pointer;
+}
+
+.calendar-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.18;
+}
+
+#monthName {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+#yearNumber {
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  opacity: 0.8;
 }
 
 .calendar-days,
-.calendar-grid{
+.calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.calendar-days div {
   text-align: center;
+  font-size: 0.75rem;
+  opacity: 0.78;
+  margin-bottom: 2px;
 }
 
-.calendar-days div{
-  font-size: 12px;
-  opacity: 0.7;
-  margin-bottom: 10px;
+.calendar-empty,
+.calendar-day {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto;
+  border-radius: 50%;
 }
 
-.calendar-grid div{
-  padding: 10px;
-  margin: 3px;
-  border-radius: 10px;
+.calendar-empty {
+  pointer-events: none;
+}
+
+.calendar-day {
+  border: 2px solid transparent;
+  background: transparent;
+  color: #f4f6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   cursor: pointer;
-  transition: 0.2s;
+  transition: transform 0.16s ease, background-color 0.16s ease;
+  font-size: 0.95rem;
 }
 
-.calendar-grid div:hover{
-  background: rgba(255,255,255,0.1);
+.calendar-day:hover {
+  transform: scale(1.06);
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.today{
-  background: #d8003d;
+.calendar-day.is-selected {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.45);
 }
 
-.day-menstruation{
-  background: #ff3b5c;
+.calendar-day.today {
+  outline: 2px solid #2f8df5;
+  outline-offset: 1px;
+}
+
+.calendar-day.day-menstruation {
+  border-color: #ff4d6d;
+  color: #ff9db0;
+}
+
+.calendar-day.day-fertile {
+  border-color: #29c7b8;
+  color: #8bf0e7;
+}
+
+.calendar-day.day-low {
+  border-color: transparent;
+  color: rgba(244, 246, 255, 0.74);
+}
+
+.calendar-day.day-ovulation {
+  box-shadow: inset 0 0 0 1px rgba(170, 116, 255, 0.88);
+}
+
+.calendar-day.day-sex::after {
+  content: "\2665";
+  position: absolute;
+  bottom: 2px;
+  font-size: 11px;
+  line-height: 1;
+  color: #ff4d6d;
+}
+
+/* ================== MAIN STATUS CARD ================== */
+.cycle-card {
+  width: min(92vw, 430px);
+  margin: 12px auto 0;
+  background: rgba(7, 14, 34, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 26px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(10px);
+  padding: 16px 16px 14px;
+  text-align: center;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+.cycle-card.is-updating {
+  opacity: 0.72;
+  transform: translateY(6px);
+}
+
+.cycle-card__date {
+  display: inline-block;
+  font-size: 0.82rem;
+  opacity: 0.8;
+  margin-bottom: 4px;
+}
+
+.cycle-card__lead {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.cycle-card__title {
+  margin: 2px 0 4px;
+  font-size: clamp(2rem, 7vw, 3rem);
+  line-height: 1.02;
+  font-weight: 800;
+}
+
+.cycle-card__subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.cycle-card__meta {
+  margin: 12px auto 10px;
+  text-align: left;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  width: min(100%, 360px);
+  opacity: 0.92;
+}
+
+.cycle-card__meta p {
+  margin: 2px 0;
+}
+
+.cycle-card__button {
+  width: 100%;
+  max-width: 290px;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-weight: 700;
   color: #fff;
-  font-weight: bold;
+  background: linear-gradient(135deg, #f05495, #d92b76);
+  cursor: pointer;
+}
+
+/* ================== DAILY CONTENT ================== */
+.calendar-content {
+  position: relative;
+  z-index: 2;
+  padding: 24px 14px 8px;
+  background: transparent;
+}
+
+.calendar-content__inner {
+  width: min(100%, 860px);
+  margin: 0 auto;
+}
+
+.calendar-content__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.calendar-content__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.calendar-content__card {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(11, 20, 44, 0.8);
+  min-height: 130px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.calendar-content__card strong {
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+
+.calendar-content__card span {
+  font-size: 0.78rem;
+  opacity: 0.84;
+  line-height: 1.35;
+}
+
+/* ================== FOOTER ================== */
+#site-footer {
+  color: #fff;
+  padding: 26px 0 34px;
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 760px) {
+  .calendar-content__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 991px) {
+  .calendar-page #mainNav.navbar-collapse {
+    position: fixed;
+    top: 74px;
+    left: 12px;
+    right: 12px;
+    max-height: calc(100vh - 86px);
+    overflow-y: auto;
+    background: rgba(6, 15, 40, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 14px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    padding: 12px;
+    z-index: 12500;
+  }
+
+  .calendar-page #mainNav.navbar-collapse:not(.show) {
+    display: none !important;
+  }
+
+  .calendar-page #mainNav.navbar-collapse.show {
+    display: block !important;
+  }
+
+  .calendar-page #mainNav .navbar-nav {
+    align-items: flex-start !important;
+    gap: 8px;
+  }
+
+  .calendar-page #mainNav .nav-link,
+  .calendar-page #mainNav .btn-cta {
+    width: 100%;
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-section {
+    padding: 16px 8px 8px;
+  }
+
+  .calendar-container {
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .calendar-days,
+  .calendar-grid {
+    gap: 4px;
+  }
+
+  .calendar-empty,
+  .calendar-day {
+    width: 38px;
+    height: 38px;
+  }
+
+  .calendar-day {
+    font-size: 0.88rem;
+  }
+
+  .cycle-card {
+    border-radius: 22px;
+    padding: 14px 12px 12px;
+  }
+
+  .cycle-card__title {
+    font-size: clamp(1.9rem, 9vw, 2.6rem);
+  }
+
+  .cycle-card__subtitle {
+    font-size: 0.86rem;
+  }
+
+  .calendar-content {
+    padding: 22px 10px 8px;
+  }
+
+  .calendar-content__cards {
+    grid-template-columns: 1fr;
+  }
 }

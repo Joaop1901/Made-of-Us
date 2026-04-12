@@ -131,7 +131,7 @@
 
 <section class="music-player-section" aria-label="Player de musica">
   <div class="music-player">
-    <img src="img/hero1.jpg" class="music-player-cover" alt="Capa da musica">
+    <img src="img/musica.png" class="music-player-cover" alt="Capa da musica">
 
     <div class="music-player-info">
       <h2 class="music-player-title">Momento 1</h2>
@@ -143,9 +143,9 @@
     <input type="range" id="music-player-progress" value="0" min="0" max="100" step="1" aria-label="Progresso da musica">
 
     <div class="music-player-controls">
-      <button type="button" class="music-player-btn music-player-prev" aria-label="Musica anterior">⏮</button>
+      <button type="button" class="music-player-btn music-player-prev" aria-label="Musica anterior">⮜</button>
       <button type="button" class="music-player-btn music-player-btn--primary music-player-play" aria-label="Tocar ou pausar">▶</button>
-      <button type="button" class="music-player-btn music-player-next" aria-label="Proxima musica">⏭</button>
+      <button type="button" class="music-player-btn music-player-next" aria-label="Proxima musica">⮞</button>
     </div>
   </div>
 </section>
@@ -214,28 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "login.html";
   }
 </script>
-<script>
-  const hero = document.querySelector('.intro-inner');
-  const char = document.querySelector('.intro-character');
-  const blob = document.querySelector('.intro-blob');
-  const canUseHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-  if (hero && char && blob && canUseHover) {
-    hero.addEventListener('mousemove', (e) => {
-      const r = hero.getBoundingClientRect();
-      const dx = (e.clientX - r.left) / r.width - 0.5;
-      const dy = (e.clientY - r.top) / r.height - 0.5;
-
-      char.style.transform = `translateX(-50%) translate(${dx*12}px, ${dy*10}px)`;
-    });
-
-    hero.addEventListener('mouseleave', () => {
-      char.style.transform = `translateX(-50%)`;
-      blob.style.transform = `scale(0.92)`;
-    });
-  }
-</script>
-
+<!-- Script do movimento do personagem removido para evitar efeito estranho no hover -->
 <script>
   (() => {
     const player = document.querySelector('.music-player');
@@ -251,16 +230,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnNext = player.querySelector('.music-player-next');
 
     const tracks = [
-      { title: 'Momento 1', artist: 'Made of Us', src: 'img/video.mp4', cover: 'img/hero1.jpg' },
-      { title: 'Momento 2', artist: 'Made of Us', src: 'img/video1.mp4', cover: 'img/hero2.jpg' },
-      { title: 'Momento 3', artist: 'Made of Us', src: 'img/video2.mp4', cover: 'img/hero3.jpg' }
+      { title: 'TENEBROSA', artist: 'MC LIVINHO', src: 'img/video1.mp4', cover: 'img/musica.png' },
+      { title: 'NOSSA MUSICA ', artist: 'BRUNO MARS', src: 'img/video2.mp4', cover: 'img/hero2.jpg' },
+      { title: 'FOI ASSIM', artist: 'SOTAM', src: 'img/video3.mp4', cover: 'img/story2.jpg' }
     ];
 
     let currentTrackIndex = 0;
     let isDragging = false;
 
     function setPlayButton(isPlaying) {
-      btnPlay.textContent = isPlaying ? '⏸' : '▶';
+      btnPlay.textContent = isPlaying ? '⏸' : '▷';
     }
 
     function loadTrack(index, shouldAutoplay = false) {

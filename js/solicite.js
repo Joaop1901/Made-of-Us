@@ -363,6 +363,20 @@ if(wishInput){
 
 document.addEventListener("click", closeAllStars);
 
+// ================== LIMPAR PEDIDOS ==================
+function clearLocalWishes(){
+  localStorage.removeItem(LOCAL_WISHES_KEY);
+  localStorage.removeItem(REMOTE_BLOCKED_KEY);
+  // Remove todas as estrelas da tela
+  if(constellationStars){
+    constellationStars.innerHTML = "";
+  }
+  setWishStatus("Todos os pedidos locais foram apagados.", "info");
+}
+
+// Adiciona um botão de limpar (opcional, para debug)
+// window.clearWishes = clearLocalWishes;
+
 // ================== INICIAR ==================
 window.addEventListener("load", () => {
   loadWishes();

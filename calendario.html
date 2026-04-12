@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt-BR">
 <head>
   <link rel="manifest" href="manifest.json">
@@ -10,18 +10,21 @@
   </title>
    
   <link rel="icon" href="img/icone.png" type="image/png">
-  <link rel="preload" as="image" href="img/personagem-optimized.png" fetchpriority="high">
 
 
   <!-- Bootstrap 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Seu CSS -->
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/calendario.css">
-<link rel="stylesheet" href="css/style.css">
 
 </head>
-<body >
+<body class="calendar-page theme-low">
+
+  <div class="calendar-bg" aria-hidden="true">
+    <div class="intro-blob"></div>
+  </div>
 
 
   <header class="site-header">
@@ -33,8 +36,8 @@
         <img src="img/logo.png" alt="Logo" class="logo me-2">
       </a>
 
-      <!-- BOTÃO MOBILE -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <!-- BOTAO MOBILE -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menu">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -48,11 +51,11 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="ela.html">VOCÊ</a>
+            <a class="nav-link" href="ela.html">VOCE</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="calendario.html">CALENDÁRIO</a>
+            <a class="nav-link" href="calendario.html">CALENDARIO</a>
           </li>
 
           <!-- CTA -->
@@ -71,32 +74,96 @@
   </nav>
 </header>
 
-<section class="calendar-section">
-  <div class="calendar-container">
-    <div class="calendar-header">
-      <button id="prevMonth">◀</button>
-      <h2 id="monthYear"></h2>
-      <button id="nextMonth">▶</button>
+<main class="calendar-app">
+  <section class="calendar-section">
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button id="prevMonth" aria-label="Mes anterior">&lt;</button>
+        <div class="calendar-title">
+          <span id="monthName"></span>
+          <span id="yearNumber"></span>
+        </div>
+        <button id="nextMonth" aria-label="Proximo mes">&gt;</button>
+      </div>
+
+      <div class="calendar-days">
+        <div>Dom</div>
+        <div>Seg</div>
+        <div>Ter</div>
+        <div>Qua</div>
+        <div>Qui</div>
+        <div>Sex</div>
+        <div>Sab</div>
+      </div>
+
+      <div class="calendar-grid" id="calendarGrid"></div>
+    </div>
+  </section>
+
+  <aside class="cycle-card cycle-card--fixed" id="cycleCard" aria-live="polite">
+    <div class="cycle-card__top">
+      <span class="cycle-card__date" id="cycleSelectedDate">Hoje</span>
+      <p class="cycle-card__lead" id="cycleLead">Previsao:</p>
+      <h3 class="cycle-card__title" id="cycleTitle">Dia da ovulacao</h3>
+      <p class="cycle-card__subtitle" id="cycleSubtitle">Alta chance de gravidez neste dia.</p>
     </div>
 
-    <div class="calendar-days">
-      <div>Dom</div>
-      <div>Seg</div>
-      <div>Ter</div>
-      <div>Qua</div>
-      <div>Qui</div>
-      <div>Sex</div>
-      <div>Sáb</div>
+    <div class="cycle-card__meta">
+      <p id="cycleMetaNext">Proxima menstruacao: --</p>
+      <p id="cycleMetaCountdown">Faltam: --</p>
+      <p id="cycleMetaFertile">Intervalo fertil: --</p>
     </div>
 
-    <div class="calendar-grid" id="calendarGrid"></div>
+    <button class="cycle-card__button" id="cycleRegisterBtn" type="button">
+      Registrar informacoes do dia
+    </button>
+  </aside>
+
+  <section class="calendar-content">
+    <div class="calendar-content__inner">
+      <h4 class="calendar-content__title">Conteudo do dia • Hoje</h4>
+
+      <div class="calendar-content__cards">
+        <article class="calendar-content__card">
+          <strong>Registre seus sintomas</strong>
+          <span>Monte seu historico e acompanhe padroes.</span>
+        </article>
+        <article class="calendar-content__card">
+          <strong>Sinais do ciclo</strong>
+          <span>Observe mudancas no corpo ao longo do mes.</span>
+        </article>
+        <article class="calendar-content__card">
+          <strong>Frequencia sexual</strong>
+          <span>Dados privados para cruzar com o periodo fertil.</span>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer">
+  <div class="container text-center">
+    <p class="mb-1">Made of Us 💕</p>
+    <small>Three years, countless memories.</small>
   </div>
-</section>
+</footer>
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
   <script src="js/calendario.js"></script>
+  <script>
+    if (localStorage.getItem("logged") !== "true") {
+      window.location.href = "login.html";
+    }
+
+    function logout() {
+      localStorage.removeItem("logged");
+      window.location.href = "login.html";
+    }
+  </script>
 
 </body>
 </html>
+
